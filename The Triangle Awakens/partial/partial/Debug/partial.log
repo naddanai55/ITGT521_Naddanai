@@ -1,0 +1,12 @@
+﻿  TriangleScan_Base.cpp
+C:\Users\nparo\source\repos\partial\TriangleScan_Base.cpp(19,19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\nparo\source\repos\partial\TriangleScan_Base.cpp(20,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\nparo\source\repos\partial\TriangleScan_Base.cpp(65,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\nparo\source\repos\partial\TriangleScan_Base.cpp(66,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\nparo\source\repos\partial\TriangleScan_Base.cpp(67,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\nparo\source\repos\partial\TriangleScan_Base.cpp(68,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\nparo\source\repos\partial\TriangleScan_Base.cpp(70,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\nparo\source\repos\partial\TriangleScan_Base.cpp(71,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\nparo\source\repos\partial\TriangleScan_Base.cpp(72,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\nparo\source\repos\partial\TriangleScan_Base.cpp(73,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  partial.vcxproj -> C:\Users\nparo\source\repos\partial\Debug\partial.exe
