@@ -8,6 +8,9 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D730116A-B296-4080-B4AA-3E9341217C98}|plane1_base.vcxproj|C:\\LIBRARIES\\GMTL-0.6.1\\GMTL\\VECBASE.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,8 +20,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VecBase.h",
+              "DocumentMoniker": "C:\\Libraries\\gmtl-0.6.1\\gmtl\\VecBase.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Libraries\\gmtl-0.6.1\\gmtl\\VecBase.h",
+              "ToolTip": "C:\\Libraries\\gmtl-0.6.1\\gmtl\\VecBase.h",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Libraries\\gmtl-0.6.1\\gmtl\\VecBase.h",
+              "ViewState": "AgIAAGwAAAAAAAAAAAASwIAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-11T11:23:21.999Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -27,9 +43,10 @@
               "RelativeDocumentMoniker": "..\\gmtl_sample_program\\gmtl_sample_program.cpp",
               "ToolTip": "C:\\Users\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
               "RelativeToolTip": "..\\gmtl_sample_program\\gmtl_sample_program.cpp",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACMAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-09T05:16:15.667Z"
+              "WhenOpened": "2024-10-10T12:55:12.676Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -39,7 +56,7 @@
               "RelativeDocumentMoniker": "plane1_base .cpp",
               "ToolTip": "C:\\Users\\nparo\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp",
               "RelativeToolTip": "plane1_base .cpp",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAACIAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAB0CAAAAAAAAAAAAACMCAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-09T04:47:29.233Z",
               "EditorCaption": ""

@@ -60,6 +60,16 @@ gmtl::Matrix44f cam_pose;   // C, as defined in the handout
 gmtl::Matrix44f view_mat;   // View transform is C^-1 (inverse of the camera transform C)
 
 // Transformation matrices applied to plane and camera poses
+gmtl::Matrix44f xtransp_mat;
+gmtl::Matrix44f xtransn_mat;
+gmtl::Matrix44f xrotp_mat;
+gmtl::Matrix44f xrotn_mat;
+
+gmtl::Matrix44f ytransp_mat;
+gmtl::Matrix44f ytransn_mat;
+gmtl::Matrix44f yrotp_mat;
+gmtl::Matrix44f yrotn_mat;
+
 gmtl::Matrix44f ztransp_mat;
 gmtl::Matrix44f ztransn_mat;
 gmtl::Matrix44f zrotp_mat;
@@ -96,6 +106,23 @@ void InitMatrices()
   const float COSTHETA = cos(ROT_AMOUNT);
   const float SINTHETA = sin(ROT_AMOUNT);
 
+  // Move left on X-axis
+  xtransp_mat.set(1, 0, 0, TRANS_AMOUNT,
+                  0, 1, 0, 0,
+                  0, 0, 1, 0,
+                  0, 0, 0, 1);
+  xtransp_mat.setState(gmtl::Matrix44f::TRANS);
+
+  gmtl::invert(xtransn_mat, xtransp_mat);
+
+  ytransp_mat.set(1, 0, 0, 0,
+                  0, 1, 0, TRANS_AMOUNT,
+                  0, 0, 1, 0,
+                  0, 0, 0, 1);
+  ytransp_mat.setState(gmtl::Matrix44f::TRANS);
+
+  gmtl::invert(ytransn_mat, ytransp_mat);
+
   // Positive Z-Translation
   ztransp_mat.set(1, 0, 0, 0,
                   0, 1, 0, 0,
@@ -104,6 +131,20 @@ void InitMatrices()
   ztransp_mat.setState(gmtl::Matrix44f::TRANS);  
 
   gmtl::invert(ztransn_mat, ztransp_mat);
+
+  xrotp_mat.set(1,        0,         0, 0,
+                0, COSTHETA, -SINTHETA, 0,
+                0, SINTHETA,  COSTHETA, 0,
+                0,        0,         0, 1);
+  xrotp_mat.setState(gmtl::Matrix44f::ORTHOGONAL);
+  gmtl::invert(xrotn_mat, xrotp_mat);
+
+  yrotp_mat.set(COSTHETA, 0, SINTHETA, 0,
+                       0, 1,        0, 0,
+               -SINTHETA, 0, COSTHETA, 0,
+                       0, 0,        0, 1);
+  yrotp_mat.setState(gmtl::Matrix44f::ORTHOGONAL);
+  gmtl::invert(yrotn_mat, yrotp_mat);
 
   // Positive Z-rotation (roll)
   zrotp_mat.set(COSTHETA, -SINTHETA, 0, 0,
@@ -170,7 +211,7 @@ void DisplayFunc(void)
 //| Viewport 1 rendering: shows the moving camera's view
 //|____________________________________________________________________
 
-  glViewport(0, 0, (GLsizei) w_width/2, (GLsizei) w_height);
+  glViewport(0, 0, (GLsizei)w_width / 2, (GLsizei)w_height);
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
@@ -183,7 +224,7 @@ void DisplayFunc(void)
   // Draws world coordinate frame
   modelview_mat = view_mat;                  // M = C^-1
   glLoadMatrixf(modelview_mat.mData);
-  DrawCoordinateFrame(10);
+  DrawCoordinateFrame(100);
 
   // Draws plane and its local frame
   modelview_mat *= plane_pose;               // M = C^-1 * T
@@ -210,17 +251,8 @@ void DisplayFunc(void)
 //| TODO: Viewport 2 rendering: shows the fixed top-down view
 //|____________________________________________________________________
 
-  // glViewport...
-
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluPerspective(CAM_FOV, (float)w_width/(2*w_height), 0.1f, 100.0f);
-
-  // glMatrixMode(GL_MODELVIEW);
-  // glLoadIdentity(); 
-  // ...
-
-  glFlush();
+ 
+  glFlush(); // Ensure all OpenGL commands are executed
 }
 
 //|____________________________________________________________________
@@ -240,24 +272,52 @@ void KeyboardFunc(unsigned char key, int x, int y)
 //|
 //| Plane controls
 //|____________________________________________________________________
-
-    case 's': // Forward translation of the plane (positive Z-translation)
+    
+    case 'w': // Forward translation of the plane (positive Z-translation)
       plane_pose = plane_pose * ztransp_mat;
       break;
-    case 'f': // Backward translation of the plane
+    case 's': // Backward translation of the plane
       plane_pose = plane_pose * ztransn_mat;
       break;
 
-
-    case 'e': // Rolls the plane (+ Z-rot)
+    // Rotation
+    case 'q': // Rolls the plane (+ Z-rot)
       plane_pose = plane_pose * zrotp_mat;
       break;
-    case 'q': // Rolls the plane (- Z-rot)
+    case 'e': // Rolls the plane (- Z-rot)
       plane_pose = plane_pose * zrotn_mat;
       break;
 
-
-    // TODO: Add the remaining controls/transforms        
+    // TODO: Add the remaining controls/transforms
+    // x axis
+    case 'a':
+        plane_pose = plane_pose * xtransp_mat;
+        break;
+    case 'd':
+        plane_pose = plane_pose * xtransn_mat;
+        break;
+    // y axis
+    case 't':
+        plane_pose = plane_pose * ytransp_mat;
+        break;
+    case 'r':
+        plane_pose = plane_pose * ytransn_mat;
+        break;
+    // Rotation
+    // x axis
+    case 'z':
+        plane_pose = plane_pose * xrotp_mat;
+        break;
+    case 'x':
+        plane_pose = plane_pose * xrotn_mat;
+        break;
+    // y axis
+    case 'c':
+        plane_pose = plane_pose * yrotp_mat;
+        break;
+    case 'v':
+        plane_pose = plane_pose * yrotn_mat;
+        break;
 
 //|____________________________________________________________________
 //|
@@ -271,7 +331,44 @@ void KeyboardFunc(unsigned char key, int x, int y)
       cam_pose = cam_pose * ztransp_mat;
       break;
 
+
     // TODO: Add the remaining controls
+    // Translation
+    // x axis
+    case 'm': 
+        cam_pose = cam_pose * xtransn_mat;
+        break;
+    case '.': 
+        cam_pose = cam_pose * xtransp_mat;
+        break;
+    // y axis
+    case 'o':
+        cam_pose = cam_pose * ytransn_mat;
+        break;
+    case '[':
+        cam_pose = cam_pose * ytransp_mat;
+        break;
+
+    // Rotation
+    case 'j': 
+        cam_pose = cam_pose * zrotn_mat;
+        break;
+    case 'l': 
+        cam_pose = cam_pose * zrotp_mat;
+        break;
+    case 'n': 
+        cam_pose = cam_pose * xrotn_mat;
+        break;
+    case ',': 
+        cam_pose = cam_pose * xrotp_mat;
+        break;
+    case 'i':
+        cam_pose = cam_pose * yrotn_mat;
+        break;
+    case 'p':
+        cam_pose = cam_pose * yrotp_mat;
+        break;
+
   }
 
   gmtl::invert(view_mat, cam_pose);       // Updates view transform to reflect the change in camera transform
@@ -339,22 +436,117 @@ void DrawCoordinateFrame(const float l)
 
 void DrawPlane(const float width, const float length, const float height)
 {
-  float w = width/2;
-  float l = length/2;
+  float w = width / 2;
+  float l = length / 2;
+  float h = height / 2;
+  float lima = l * 1.5; 
+  float whiskey = w * 3;
+  float tango = w - (w - 0.5);
+  float hotel = h * 2;
+  float tail_lima = l * 0.2;
   
-  glBegin(GL_TRIANGLES);
-    // Body is red
-    glColor3f( 1.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f,   l);
-	  glVertex3f(   w, 0.0f,  -l);
-	  glVertex3f(  -w, 0.0f,  -l);
+  // Body
+  glBegin(GL_QUADS);
+  glColor3f(1.0f, 0.0f, 0.0f);
 
-    // Wing is blue
-    glColor3f( 0.0f,    0.0f, 1.0f);
-    glVertex3f(0.0f,    0.0f, 0.0f);
-	  glVertex3f(0.0f,    0.0f,   -l);
-	  glVertex3f(0.0f,  height,   -l);
+  glVertex3f(-w, -h, lima);
+  glVertex3f(w, -h, lima);
+  glVertex3f(w, h, lima);
+  glVertex3f(-w, h, lima);
+
+  glVertex3f(-w, -h, -lima);
+  glVertex3f(-w, h, -lima);
+  glVertex3f(w, -h, -lima);
+  glVertex3f(w, h, -lima);
+
+  glVertex3f(w, -h, -lima);
+  glVertex3f(w, h, -lima);
+  glVertex3f(w, h, lima);
+  glVertex3f(w, -h, lima);
+
+  glVertex3f(-w, -h, -lima);
+  glVertex3f(-w, -h, lima);
+  glVertex3f(-w, h, lima);
+  glVertex3f(-w, h, -lima);
+
+  glVertex3f(-w, h, -lima);
+  glVertex3f(-w, h, lima);
+  glVertex3f(w, h, lima);
+  glVertex3f(w, h, -lima);
+
+  glVertex3f(-w, -h, -lima);
+  glVertex3f(w, -h, -lima);
+  glVertex3f(w, -h, lima);
+  glVertex3f(-w, -h, lima);
   glEnd();
+
+  // head 
+  glBegin(GL_TRIANGLES);
+  glColor3f(0.0f, 0.0f, 1.0f);
+
+  glVertex3f(w, h, lima);
+  glVertex3f(w, -h, lima);
+  glVertex3f(w, -h, lima + l);
+
+  glVertex3f(-w, h, lima);
+  glVertex3f(-w, -h, lima);
+  glVertex3f(-w, -h, lima + l);
+  glEnd();
+
+  glBegin(GL_QUADS);
+  glColor3f(0.0f, 0.0f, 1.0f);
+
+  glVertex3f(-w, -h, lima + l);
+  glVertex3f(-w, h, lima);
+  glVertex3f(w, h, lima);
+  glVertex3f(w, -h, lima + l);
+
+  glVertex3f(-w, -h, lima + l);
+  glVertex3f(-w, -h, lima);
+  glVertex3f(w, -h, lima);
+  glVertex3f(w, -h, lima + l);
+  glEnd();
+
+  // wing
+  glBegin(GL_TRIANGLES);
+  glColor3f(0.0f, 1.0f, 0.0f);
+
+  glVertex3f(w, -h, -lima);
+  glVertex3f(whiskey, -h, -lima);
+  glVertex3f(w, -h, lima + l);
+
+  glVertex3f(-w, -h, -lima);
+  glVertex3f(-whiskey, -h, -lima);
+  glVertex3f(-w, -h, lima + l);
+  glEnd();
+
+  // tail 
+  glBegin(GL_TRIANGLES);
+  glColor3f(0.0f, 1.0f, 1.0f);
+
+  glVertex3f(tango, h, -lima);
+  glVertex3f(tango, hotel, -lima);
+  glVertex3f(tango, h, tail_lima);
+
+  glVertex3f(-tango, h, -lima);
+  glVertex3f(-tango, hotel, -lima);
+  glVertex3f(-tango, h, tail_lima);
+  glEnd();
+
+  glBegin(GL_QUADS);
+  glColor3f(0.0f, 1.0f, 1.0f);
+
+  glVertex3f(-tango, h, tail_lima);
+  glVertex3f(-tango, hotel, -lima);
+  glVertex3f(tango, hotel, -lima);
+  glVertex3f(tango, h, tail_lima);
+
+  glVertex3f(-tango, h, -lima);
+  glVertex3f(-tango, hotel, -lima);
+  glVertex3f(tango, hotel, -lima);
+  glVertex3f(tango, h, -lima);
+  glEnd();
+
 }
 
 //|____________________________________________________________________

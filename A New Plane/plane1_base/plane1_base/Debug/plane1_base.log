@@ -1,2 +1,5 @@
 ﻿  plane1_base .cpp
+C:\Users\nparo\source\repos\A New Plane\plane1_base\plane1_base .cpp(442,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nparo\source\repos\A New Plane\plane1_base\plane1_base .cpp(444,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nparo\source\repos\A New Plane\plane1_base\plane1_base .cpp(446,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   plane1_base.vcxproj -> C:\Users\nparo\source\repos\A New Plane\plane1_base\Debug\plane1_base.exe
