@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\nparo\\source\\repos\\A New Plane\\plane1_base\\",
+  "WorkspaceRootPath": "C:\\Users\\Nai\\source\\repos\\A New Plane\\plane1_base\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D730116A-B296-4080-B4AA-3E9341217C98}|plane1_base.vcxproj|C:\\Users\\nparo\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D730116A-B296-4080-B4AA-3E9341217C98}|plane1_base.vcxproj|C:\\Users\\Nai\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D730116A-B296-4080-B4AA-3E9341217C98}|plane1_base.vcxproj|solutionrelative:plane1_base .cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
@@ -24,9 +24,9 @@
               "DocumentIndex": 1,
               "Title": "gmtl_sample_program.cpp",
               "DocumentMoniker": "C:\\Users\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
-              "RelativeDocumentMoniker": "..\\gmtl_sample_program\\gmtl_sample_program.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
               "ToolTip": "C:\\Users\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
-              "RelativeToolTip": "..\\gmtl_sample_program\\gmtl_sample_program.cpp",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
               "ViewState": "AgIAABsAAAAAAAAAAAAAACMAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-09T05:16:15.667Z"
@@ -35,11 +35,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "plane1_base .cpp",
-              "DocumentMoniker": "C:\\Users\\nparo\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp",
+              "DocumentMoniker": "C:\\Users\\Nai\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp",
               "RelativeDocumentMoniker": "plane1_base .cpp",
-              "ToolTip": "C:\\Users\\nparo\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp",
+              "ToolTip": "C:\\Users\\Nai\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp",
               "RelativeToolTip": "plane1_base .cpp",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAACIAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-09T04:47:29.233Z",
               "EditorCaption": ""
