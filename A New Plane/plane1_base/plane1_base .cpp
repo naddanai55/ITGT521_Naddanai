@@ -60,7 +60,9 @@ gmtl::Matrix44f cam_pose;   // C, as defined in the handout
 gmtl::Matrix44f view_mat;   // View transform is C^-1 (inverse of the camera transform C)
 
 gmtl::Matrix44f cam_topview_pose;
-gmtl::Matrix44f view_top_mat;
+gmtl::Matrix44f cam_topview_pose_n;
+
+
 
 // Transformation matrices applied to plane and camera poses
 gmtl::Matrix44f xtransp_mat;
@@ -80,6 +82,10 @@ gmtl::Matrix44f zrotn_mat;
 
 gmtl::Matrix44f camrotp_mat;
 gmtl::Matrix44f camrotn_mat;
+
+gmtl::Matrix44f xrotfix; 
+gmtl::Matrix44f ytransfix; 
+gmtl::Matrix44f fixed_view_mat;
 
 //|___________________
 //|
@@ -166,10 +172,10 @@ void InitMatrices()
   // Negative Z-rotation (roll)
   gmtl::invert(zrotn_mat, zrotp_mat);
 
-  camrotp_mat.set(1,        0,         0, 0,
+  camrotp_mat.set(1,           0,             0, 0,
                  0, COSTHETA_CAM, -SINTHETA_CAM, 0,
                  0, SINTHETA_CAM,  COSTHETA_CAM, 0,
-                 0,        0,         0, 1);
+                 0,            0,             0, 1);
   camrotp_mat.setState(gmtl::Matrix44f::ORTHOGONAL);
   gmtl::invert(camrotn_mat, camrotp_mat);
   
@@ -189,12 +195,27 @@ void InitMatrices()
   cam_pose.setState(gmtl::Matrix44f::AFFINE);            
   gmtl::invert(view_mat, cam_pose);                 // View transform is the inverse of the camera pose
 
-  cam_topview_pose.set(1, 0, 0, 2.0f,
-                       0, 1, 0, 1.0f,
+  cam_topview_pose.set(1, 0, 0, 0.0f,
+                       0, 1, 0, 0.0f,
                        0, 0, 1, 15.0f,
                        0, 0, 0, 1.0f);
   cam_topview_pose.setState(gmtl::Matrix44f::AFFINE);
-  gmtl::invert(view_top_mat, cam_topview_pose);
+  gmtl::invert(cam_topview_pose_n, cam_topview_pose);
+
+  xrotfix.set(1,            0,             0, 0.0f,
+              0, COSTHETA_CAM, -SINTHETA_CAM, 0.0f,
+              0, SINTHETA_CAM,  COSTHETA_CAM, 0.0f,
+              0,            0,             0, 1.0f);
+  xrotfix.setState(gmtl::Matrix44f::ORTHOGONAL);
+
+  ytransfix.set(1, 0, 0,   0.0f,
+                0, 1, 0, -20.0f,
+                0, 0, 1,   0.0f,
+                0, 0, 0,   1.0f);
+  ytransfix.setState(gmtl::Matrix44f::TRANS);
+
+  fixed_view_mat = xrotfix * ytransfix;
+
 }
 //|____________________________________________________________________
 //|
@@ -276,8 +297,8 @@ void DisplayFunc(void)
 //|____________________________________________________________________
 
   glViewport(w_width / 2, 0, (GLsizei)w_width / 2, (GLsizei)w_height);
-
-  modelview_mat = view_top_mat * camrotp_mat;
+  
+  modelview_mat = cam_topview_pose_n * camrotp_mat;
   glLoadMatrixf(modelview_mat.mData);
   DrawCoordinateFrame(100);
 
@@ -285,6 +306,11 @@ void DisplayFunc(void)
   glLoadMatrixf(modelview_mat.mData);
   DrawPlane(P_WIDTH, P_LENGTH, P_HEIGHT);
   DrawCoordinateFrame(3);
+
+  modelview_mat = fixed_view_mat * cam_pose;
+  glLoadMatrixf(modelview_mat.mData);
+  DrawCoordinateFrame(3);
+
 
   glFlush(); // Ensure all OpenGL commands are executed
 }
@@ -315,10 +341,10 @@ void KeyboardFunc(unsigned char key, int x, int y)
       break;
 
     // Rotation
-    case 'q': // Rolls the plane (+ Z-rot)
+    case 'g': // Rolls the plane (+ Z-rot)
       plane_pose = plane_pose * zrotp_mat;
       break;
-    case 'e': // Rolls the plane (- Z-rot)
+    case 'f': // Rolls the plane (- Z-rot)
       plane_pose = plane_pose * zrotn_mat;
       break;
 
@@ -358,10 +384,10 @@ void KeyboardFunc(unsigned char key, int x, int y)
 //| Camera controls
 //|____________________________________________________________________
 
-    case 'k': // Forward translation of the camera (negative Z-translation - cameras looks in its (local) -Z direction)
+    case 'u': // Forward translation of the camera (negative Z-translation - cameras looks in its (local) -Z direction)
       cam_pose = cam_pose * ztransn_mat;
       break;
-    case ';': // Backward translation of the camera
+    case 'j': // Backward translation of the camera
       cam_pose = cam_pose * ztransp_mat;
       break;
 
@@ -369,42 +395,40 @@ void KeyboardFunc(unsigned char key, int x, int y)
     // TODO: Add the remaining controls
     // Translation
     // x axis
-    case 'm': 
+    case 'h': 
         cam_pose = cam_pose * xtransn_mat;
         break;
-    case '.': 
+    case 'k': 
         cam_pose = cam_pose * xtransp_mat;
         break;
     // y axis
-    case 'o':
+    case 'l':
         cam_pose = cam_pose * ytransn_mat;
         break;
-    case '[':
+    case 'o':
         cam_pose = cam_pose * ytransp_mat;
         break;
 
     // Rotation
-    case 'j': 
+    case 'n': 
         cam_pose = cam_pose * zrotn_mat;
         break;
-    case 'l': 
+    case 'm': 
         cam_pose = cam_pose * zrotp_mat;
         break;
-    case 'n': 
+    case ',': 
         cam_pose = cam_pose * xrotn_mat;
         break;
-    case ',': 
+    case '.': 
         cam_pose = cam_pose * xrotp_mat;
         break;
-    case 'i':
+    case '[':
         cam_pose = cam_pose * yrotn_mat;
         break;
-    case 'p':
+    case ']' : 
         cam_pose = cam_pose * yrotp_mat;
         break;
-
   }
-
   gmtl::invert(view_mat, cam_pose);       // Updates view transform to reflect the change in camera transform
   glutPostRedisplay();                    // Asks GLUT to redraw the screen
 }
@@ -483,25 +507,25 @@ void DrawPlane(const float width, const float length, const float height)
   glBegin(GL_QUADS);
   glColor3f(1.0f, 0.0f, 0.0f);
 
-  glVertex3f(-w, -h, lima);
-  glVertex3f(w, -h, lima);
-  glVertex3f(w, h, lima);
-  glVertex3f(-w, h, lima);
+  glVertex3f(-w,  -h, lima);
+  glVertex3f( w,  -h, lima);
+  glVertex3f( w,   h, lima);
+  glVertex3f(-w,   h, lima);
 
   glVertex3f(-w, -h, -lima);
-  glVertex3f(-w, h, -lima);
-  glVertex3f(w, -h, -lima);
-  glVertex3f(w, h, -lima);
+  glVertex3f(-w,  h, -lima);
+  glVertex3f( w, -h, -lima);
+  glVertex3f( w,  h, -lima);
 
   glVertex3f(w, -h, -lima);
-  glVertex3f(w, h, -lima);
-  glVertex3f(w, h, lima);
-  glVertex3f(w, -h, lima);
+  glVertex3f(w,  h, -lima);
+  glVertex3f(w,  h,  lima);
+  glVertex3f(w, -h,  lima);
 
   glVertex3f(-w, -h, -lima);
   glVertex3f(-w, -h, lima);
-  glVertex3f(-w, h, lima);
-  glVertex3f(-w, h, -lima);
+  glVertex3f(-w,  h, lima);
+  glVertex3f(-w,  h, -lima);
 
   glVertex3f(-w, h, -lima);
   glVertex3f(-w, h, lima);
