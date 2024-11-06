@@ -1,4 +1,4 @@
-# Welcome to TGT521_Naddanai
+# Welcome to ITGT521_Naddanai
 
 This repository is for the **ITGT521 3D Graphics and Rendering** class.  
 **Student:** Naddanai Parod  
