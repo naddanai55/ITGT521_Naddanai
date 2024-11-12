@@ -1,0 +1,15 @@
+﻿plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutInitWindowSize referenced in function main
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutInitDisplayMode referenced in function main
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutMainLoop referenced in function main
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutPostRedisplay referenced in function "void __cdecl KeyboardFunc(unsigned char,int,int)" (?KeyboardFunc@@YAXEHH@Z)
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutSwapBuffers referenced in function "void __cdecl DisplayFunc(void)" (?DisplayFunc@@YAXXZ)
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutKeyboardFunc referenced in function main
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutReshapeFunc referenced in function main
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutDisplayFunc referenced in function main
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutMouseFunc referenced in function main
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutMotionFunc referenced in function main
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp_glutGetModifiers referenced in function "void __cdecl MouseFunc(int,int,int,int)" (?MouseFunc@@YAXHHHH@Z)
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp___glutInitWithExit referenced in function glutInit_ATEXIT_HACK
+plane2_base_a.obj : error LNK2019: unresolved external symbol __imp___glutCreateWindowWithExit referenced in function glutCreateWindow_ATEXIT_HACK
+C:\Libraries\freeglut\lib\freeglut.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\nparo\source\repos\The Plane Strikes Back\The_Plane_Strikes_Back_Naddanai\x64\Debug\The_Plane_Strikes_Back_Naddanai.exe : fatal error LNK1120: 13 unresolved externals

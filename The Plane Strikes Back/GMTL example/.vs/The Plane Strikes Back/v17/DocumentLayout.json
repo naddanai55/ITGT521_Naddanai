@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nparo\\source\\repos\\The Plane Strikes Back\\GMTL example\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA0D5FF-E4B3-4E78-A0EE-D15D67110FC5}|The Plane Strikes Back.vcxproj|C:\\Users\\nparo\\source\\repos\\The Plane Strikes Back\\GMTL example\\gmtl_quaternion_example.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BFA0D5FF-E4B3-4E78-A0EE-D15D67110FC5}|The Plane Strikes Back.vcxproj|solutionrelative:gmtl_quaternion_example.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "gmtl_quaternion_example.cpp",
+              "DocumentMoniker": "C:\\Users\\nparo\\source\\repos\\The Plane Strikes Back\\GMTL example\\gmtl_quaternion_example.cpp",
+              "RelativeDocumentMoniker": "gmtl_quaternion_example.cpp",
+              "ToolTip": "C:\\Users\\nparo\\source\\repos\\The Plane Strikes Back\\GMTL example\\gmtl_quaternion_example.cpp",
+              "RelativeToolTip": "gmtl_quaternion_example.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-04T07:48:44.142Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

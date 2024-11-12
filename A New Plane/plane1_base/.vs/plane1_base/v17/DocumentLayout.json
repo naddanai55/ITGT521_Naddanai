@@ -1,13 +1,19 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Nai\\source\\repos\\A New Plane\\plane1_base\\",
+  "WorkspaceRootPath": "C:\\Users\\nparo\\source\\repos\\A New Plane\\plane1_base\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D730116A-B296-4080-B4AA-3E9341217C98}|plane1_base.vcxproj|C:\\Users\\Nai\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D730116A-B296-4080-B4AA-3E9341217C98}|plane1_base.vcxproj|C:\\Users\\nparo\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D730116A-B296-4080-B4AA-3E9341217C98}|plane1_base.vcxproj|solutionrelative:plane1_base .cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nparo\\source\\repos\\A New Plane\\A_New_Plane_Naddanai.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Libraries\\gmtl-0.6.1\\gmtl\\VecBase.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,27 +27,50 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "gmtl_sample_program.cpp",
-              "DocumentMoniker": "C:\\Users\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
-              "ToolTip": "C:\\Users\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-09T05:16:15.667Z"
+              "DocumentIndex": 3,
+              "Title": "VecBase.h",
+              "DocumentMoniker": "C:\\Libraries\\gmtl-0.6.1\\gmtl\\VecBase.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Libraries\\gmtl-0.6.1\\gmtl\\VecBase.h",
+              "ToolTip": "C:\\Libraries\\gmtl-0.6.1\\gmtl\\VecBase.h",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Libraries\\gmtl-0.6.1\\gmtl\\VecBase.h",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAswIAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-14T17:09:19.592Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "plane1_base .cpp",
-              "DocumentMoniker": "C:\\Users\\Nai\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp",
+              "DocumentMoniker": "C:\\Users\\nparo\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp",
               "RelativeDocumentMoniker": "plane1_base .cpp",
-              "ToolTip": "C:\\Users\\Nai\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp",
-              "RelativeToolTip": "plane1_base .cpp",
-              "ViewState": "AgIAAA8BAAAAAAAAAAAiwC4BAAAbAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\nparo\\source\\repos\\A New Plane\\plane1_base\\plane1_base .cpp*",
+              "RelativeToolTip": "plane1_base .cpp*",
+              "ViewState": "AgIAAOgBAAAAAAAAAAAwwAMCAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-09T04:47:29.233Z",
+              "WhenOpened": "2024-10-14T16:40:43.873Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "gmtl_sample_program.cpp",
+              "DocumentMoniker": "C:\\Users\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
+              "RelativeDocumentMoniker": "..\\gmtl_sample_program\\gmtl_sample_program.cpp",
+              "ToolTip": "C:\\Users\\nparo\\source\\repos\\A New Plane\\gmtl_sample_program\\gmtl_sample_program.cpp",
+              "RelativeToolTip": "..\\gmtl_sample_program\\gmtl_sample_program.cpp",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-09T05:16:15.667Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "A_New_Plane_Naddanai.cpp",
+              "DocumentMoniker": "C:\\Users\\nparo\\source\\repos\\A New Plane\\A_New_Plane_Naddanai.cpp",
+              "RelativeDocumentMoniker": "..\\A_New_Plane_Naddanai.cpp",
+              "ToolTip": "C:\\Users\\nparo\\source\\repos\\A New Plane\\A_New_Plane_Naddanai.cpp",
+              "RelativeToolTip": "..\\A_New_Plane_Naddanai.cpp",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-09T04:47:29.233Z"
             }
           ]
         }

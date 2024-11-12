@@ -1,0 +1,7 @@
+﻿  plane2_base_a.cpp
+C:\Users\nparo\OneDrive\GT - Mahidol\Class\ITGT521 3D Graphics and Rendering\repos\The Plane Strikes Back\plane2_base\plane2_base_a.cpp(491,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nparo\OneDrive\GT - Mahidol\Class\ITGT521 3D Graphics and Rendering\repos\The Plane Strikes Back\plane2_base\plane2_base_a.cpp(493,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nparo\OneDrive\GT - Mahidol\Class\ITGT521 3D Graphics and Rendering\repos\The Plane Strikes Back\plane2_base\plane2_base_a.cpp(494,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nparo\OneDrive\GT - Mahidol\Class\ITGT521 3D Graphics and Rendering\repos\The Plane Strikes Back\plane2_base\plane2_base_a.cpp(495,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nparo\OneDrive\GT - Mahidol\Class\ITGT521 3D Graphics and Rendering\repos\The Plane Strikes Back\plane2_base\plane2_base_a.cpp(497,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  plane2_base.vcxproj -> C:\Users\nparo\OneDrive\GT - Mahidol\Class\ITGT521 3D Graphics and Rendering\repos\The Plane Strikes Back\plane2_base\Debug\plane2_base.exe
