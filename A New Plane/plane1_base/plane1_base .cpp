@@ -500,10 +500,12 @@ void DrawPlane(const float width, const float length, const float height)
   float lima = l * 1.5; 
   float whiskey = w * 3;
   float tango = w - (w - 0.5);
-  float hotel = h * 2;
+  float hotel = h * 2.5;
   float tail_lima = l * 0.2;
-  
-  // Body
+  float hulu = h / 5;
+  float jet = lima * 1.25;
+
+  // Body dy
   glBegin(GL_QUADS);
   glColor3f(1.0f, 0.0f, 0.0f);
 
@@ -517,68 +519,68 @@ void DrawPlane(const float width, const float length, const float height)
   glVertex3f( w, -h, -lima);
   glVertex3f( w,  h, -lima);
 
-  glVertex3f(w, -h, -lima);
-  glVertex3f(w,  h, -lima);
-  glVertex3f(w,  h,  lima);
-  glVertex3f(w, -h,  lima);
+  //glVertex3f(w, -h, -lima);
+  //glVertex3f(w,  h, -lima);
+  //glVertex3f(w,  h,  lima);
+  //glVertex3f(w, -h,  lima);
 
-  glVertex3f(-w, -h, -lima);
-  glVertex3f(-w, -h, lima);
-  glVertex3f(-w,  h, lima);
-  glVertex3f(-w,  h, -lima);
+  //glVertex3f(-w, -h, -lima);
+  //glVertex3f(-w, -h, lima);
+  //glVertex3f(-w,  h, lima);
+  //glVertex3f(-w,  h, -lima);
 
-  glVertex3f(-w, h, -lima);
-  glVertex3f(-w, h, lima);
-  glVertex3f(w, h, lima);
-  glVertex3f(w, h, -lima);
+  //glVertex3f(-w, h, -lima);
+  //glVertex3f(-w, h, lima);
+  //glVertex3f(w, h, lima);
+  //glVertex3f(w, h, -lima);
 
-  glVertex3f(-w, -h, -lima);
-  glVertex3f(w, -h, -lima);
-  glVertex3f(w, -h, lima);
-  glVertex3f(-w, -h, lima);
-  glEnd();
+  //glVertex3f(-w, -h, -lima);
+  //glVertex3f(w, -h, -lima);
+  //glVertex3f(w, -h, lima);
+  //glVertex3f(-w, -h, lima);
+  //glEnd();
 
-  // head 
-  glBegin(GL_TRIANGLES);
-  glColor3f(0.0f, 0.0f, 1.0f);
+  //// head 
+  //glBegin(GL_TRIANGLES);
+  //glColor3f(0.0f, 0.0f, 1.0f);
 
-  glVertex3f(w, h, lima);
-  glVertex3f(w, -h, lima);
-  glVertex3f(w, -h, lima + l);
+  //glVertex3f(w, h, lima);
+  //glVertex3f(w, -h, lima);
+  //glVertex3f(w, -h, lima + l);
 
-  glVertex3f(-w, h, lima);
-  glVertex3f(-w, -h, lima);
-  glVertex3f(-w, -h, lima + l);
-  glEnd();
+  //glVertex3f(-w, h, lima);
+  //glVertex3f(-w, -h, lima);
+  //glVertex3f(-w, -h, lima + l);
+  //glEnd();
 
-  glBegin(GL_QUADS);
-  glColor3f(0.0f, 0.0f, 1.0f);
+  //glBegin(GL_QUADS);
+  //glColor3f(0.0f, 0.0f, 1.0f);
 
-  glVertex3f(-w, -h, lima + l);
-  glVertex3f(-w, h, lima);
-  glVertex3f(w, h, lima);
-  glVertex3f(w, -h, lima + l);
+  //glVertex3f(-w, -h, lima + l);
+  //glVertex3f(-w, h, lima);
+  //glVertex3f(w, h, lima);
+  //glVertex3f(w, -h, lima + l);
 
-  glVertex3f(-w, -h, lima + l);
-  glVertex3f(-w, -h, lima);
-  glVertex3f(w, -h, lima);
-  glVertex3f(w, -h, lima + l);
-  glEnd();
+  //glVertex3f(-w, -h, lima + l);
+  //glVertex3f(-w, -h, lima);
+  //glVertex3f(w, -h, lima);
+  //glVertex3f(w, -h, lima + l);
+  //glEnd();
 
-  // wing
-  glBegin(GL_TRIANGLES);
-  glColor3f(0.0f, 1.0f, 0.0f);
+  //// wing
+  //glBegin(GL_TRIANGLES);
+  //glColor3f(0.0f, 1.0f, 0.0f);
 
-  glVertex3f(w, -h, -lima);
-  glVertex3f(whiskey, -h, -lima);
-  glVertex3f(w, -h, lima + l);
+  //glVertex3f(w, -h, -lima);
+  //glVertex3f(whiskey, -h, -lima);
+  //glVertex3f(w, -h, lima + l);
 
   glVertex3f(-w, -h, -lima);
   glVertex3f(-whiskey, -h, -lima);
   glVertex3f(-w, -h, lima + l);
   glEnd();
 
-  // tail 
+  // tail l  
   glBegin(GL_TRIANGLES);
   glColor3f(0.0f, 1.0f, 1.0f);
 
@@ -604,7 +606,6 @@ void DrawPlane(const float width, const float length, const float height)
   glVertex3f(tango, hotel, -lima);
   glVertex3f(tango, h, -lima);
   glEnd();
-
 }
 
 //|____________________________________________________________________
