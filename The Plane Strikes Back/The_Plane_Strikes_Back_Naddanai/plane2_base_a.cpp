@@ -1,31 +1,3 @@
-//|___________________________________________________________________
-//!
-//! \file plane2_base.cpp
-//!
-//! \brief Base source code for the second plane assignment.
-//!
-//! Author: Mores Prachyabrued.
-//!
-//! Keyboard inputs for plane and propeller (subpart):
-//!   s   = moves the plane forward
-//!   f   = moves the plane backward
-//!   q,e = rolls the plane
-//!   a   = yaws the plane
-//!   x   = pitches the plane
-//!
-//!   r   = rotates propeller
-//!
-//! Mouse inputs for world-relative camera:
-//!   Hold left button and drag  = controls azimuth and elevation 
-//!                                (Press CTRL (and hold) before left button to restrict to azimuth control only,
-//!                                 Press SHIFT (and hold) before left button to restrict to elevation control only)   
-//!   Hold right button and drag = controls distance
-//!
-//! TODO: Extend the code to satisfy the requirements given in the assignment handout
-//!
-//! Note: Good programmer uses good comments! :)
-//|___________________________________________________________________
-
 //|___________________
 //|
 //| Includes
@@ -97,13 +69,13 @@ float tr_angle_a_sub = -90;
 float st_angle_b = 90;
 float st_angle_c = 90;
 
-float pp_angle_limit = 35.0f;
+float st_angle_limit = 35.0f;
 
-float sub_b_max_angle = st_angle_b + pp_angle_limit;
-float sub_b_min_angle = st_angle_b - pp_angle_limit;
+float sub_b_max_angle = st_angle_b + st_angle_limit;
+float sub_b_min_angle = st_angle_b - st_angle_limit;
 
-float sub_c_max_angle = st_angle_c + pp_angle_limit;
-float sub_c_min_angle = st_angle_c - pp_angle_limit;
+float sub_c_max_angle = st_angle_c + st_angle_limit;
+float sub_c_min_angle = st_angle_c - st_angle_limit;
  
 // Mouse & keyboard
 int mx_prev = 0, my_prev = 0;
@@ -357,20 +329,20 @@ void DisplayFunc(void)
 
 void KeyboardFunc(unsigned char key, int x, int y)
 {
-  switch (key) {
+    switch (key) {
 //|____________________________________________________________________
 //|
 //| Camera switch
 //|____________________________________________________________________
 
     case 'v': // Select camera to view
-      cam_id = (cam_id + 1) % 3;
-      printf("View camera = %d\n", cam_id);
-      break;
+        cam_id = (cam_id + 1) % 3;
+        printf("View camera = %d\n", cam_id);
+        break;
     case 'b': // Select camera to control
-      camctrl_id = (camctrl_id + 1) % 3;
-      printf("Control camera = %d\n", camctrl_id);
-      break;
+        camctrl_id = (camctrl_id + 1) % 3;
+        printf("Control camera = %d\n", camctrl_id);
+        break;
 
 //|____________________________________________________________________
 //|
@@ -378,46 +350,53 @@ void KeyboardFunc(unsigned char key, int x, int y)
 //|____________________________________________________________________
 
     case 'p': { // Forward translation of the plane (+Z translation)  
-      gmtl::Quatf v_q = plane_q1 * gmtl::Quatf(PLANE_FORWARD[0], PLANE_FORWARD[1], PLANE_FORWARD[2], 0) * gmtl::makeConj(plane_q1);
-      plane_p1         = plane_p1 + v_q.mData;
-      } break;
+        gmtl::Quatf v_q = plane_q1 * gmtl::Quatf(PLANE_FORWARD[0], PLANE_FORWARD[1], PLANE_FORWARD[2], 0) * gmtl::makeConj(plane_q1);
+        plane_p1 = plane_p1 + v_q.mData;
+    } 
+    break;
+
     case ';': { // Backward translation of the plane (-Z translation)
-      gmtl::Quatf v_q = plane_q1 * gmtl::Quatf(-PLANE_FORWARD[0], -PLANE_FORWARD[1], -PLANE_FORWARD[2], 0) * gmtl::makeConj(plane_q1);
-      plane_p1         = plane_p1 + v_q.mData;
-      } break;
+        gmtl::Quatf v_q = plane_q1 * gmtl::Quatf(-PLANE_FORWARD[0], -PLANE_FORWARD[1], -PLANE_FORWARD[2], 0) * gmtl::makeConj(plane_q1);
+        plane_p1 = plane_p1 + v_q.mData;
+    } 
+    break;
 
     case 'e': // Rolls the plane (+Z rot)
-      plane_q1 = plane_q1 * zrotp_q;
-      break;
+        plane_q1 = plane_q1 * zrotp_q;
+    break;
+
     case 'q': // Rolls the plane (-Z rot)
-      plane_q1 = plane_q1 * zrotn_q;
-      break;
+        plane_q1 = plane_q1 * zrotn_q;
+    break;
 
     case 'w': // Pitches the plane (+X rot)
         plane_q1 = plane_q1 * xrotp_q;
-        break;
+    break;
+
     case 's': // Pitches the plane (+X rot)
         plane_q1 = plane_q1 * xrotn_q;
-        break;
+    break;
+
     case 'a': // Pitches the plane (+Y rot)
         plane_q1 = plane_q1 * yrotp_q;
-        break;
+    break;
+
     case 'd': // Rolls the plane (-Y rot)
         plane_q1 = plane_q1 * yrotn_q;
-        break;
+    break;
 
 //|____________________________________________________________________
 //|
-//| Propeller controls (subpart)
+//| controls (subpart)
 //|____________________________________________________________________
 
     case 'r': // Rotates propeller
-      st_angle_b += STABILIZER_ROTATION;
-      if (st_angle_b > sub_b_max_angle) {
-          st_angle_b = sub_b_max_angle;
-      }
+        st_angle_b += STABILIZER_ROTATION;
+        if (st_angle_b > sub_b_max_angle) {
+            st_angle_b = sub_b_max_angle;
+        }
+    break;
 
-      break;
     case 'f': // Rotates propeller 
         st_angle_b -= STABILIZER_ROTATION;
         if (st_angle_b < sub_b_min_angle) {
@@ -456,7 +435,6 @@ void KeyboardFunc(unsigned char key, int x, int y)
 
         break;
   }
-
   glutPostRedisplay();                    // Asks GLUT to redraw the screen
 }
 
@@ -768,94 +746,76 @@ void DrawTurretGun(const float width, const float length, const float height) {
     float w = width / 2;
     float l = length / 2;
     float h = height / 2;
+    float gun_barrel_length = l * 2.5f; 
+    float gun_barrel_radius = w * 0.15f; 
+    float gun_head_radius = w * 0.5f; 
+    float gun_head_height = h * 0.3f;  
+    float head_offset = l * 0.5f; 
+    float barrel_offset = gun_barrel_length / 2.0f; 
 
-    // Gun specific dimensions
-    float gun_barrel_length = l * 2.5f; // Length of the gun barrel
-    float gun_barrel_radius = w * 0.15f; // Radius of the gun barrel (width of the barrel)
-
-    // Smaller head dimensions
-    float gun_head_radius = w * 0.5f; // Smaller radius for the turret head
-    float gun_head_height = h * 0.3f;  // Smaller height for the turret head
-
-    // Position offsets for the head and barrel
-    float head_offset = l * 0.5f;  // Offset for the center of the turret's head
-    float barrel_offset = gun_barrel_length / 2.0f; // Offset for the barrel
-
-    // Draw the turret head (a cylinder representing the turret's rotating part)
+    // Draw the turret head
     glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f); // Yellow color
-    // Top face
+    glColor3f(1.0f, 1.0f, 0.0f);
+    // Top
     glVertex3f(-gun_head_radius, gun_head_height, head_offset);
     glVertex3f(gun_head_radius, gun_head_height, head_offset);
     glVertex3f(gun_head_radius, gun_head_height, head_offset - l);
     glVertex3f(-gun_head_radius, gun_head_height, head_offset - l);
-
-    // Bottom face
+    // Bottom
     glVertex3f(-gun_head_radius, -gun_head_height, head_offset);
     glVertex3f(-gun_head_radius, -gun_head_height, head_offset - l);
     glVertex3f(gun_head_radius, -gun_head_height, head_offset - l);
     glVertex3f(gun_head_radius, -gun_head_height, head_offset);
-
-    // Right face
+    // Right
     glVertex3f(gun_head_radius, gun_head_height, head_offset);
     glVertex3f(gun_head_radius, -gun_head_height, head_offset);
     glVertex3f(gun_head_radius, -gun_head_height, head_offset - l);
     glVertex3f(gun_head_radius, gun_head_height, head_offset - l);
-
-    // Left face
+    // Left 
     glVertex3f(-gun_head_radius, gun_head_height, head_offset);
     glVertex3f(-gun_head_radius, gun_head_height, head_offset - l);
     glVertex3f(-gun_head_radius, -gun_head_height, head_offset - l);
     glVertex3f(-gun_head_radius, -gun_head_height, head_offset);
-
-    // Front face (the side facing the gun barrel)
+    // Front
     glVertex3f(-gun_head_radius, gun_head_height, head_offset);
     glVertex3f(gun_head_radius, gun_head_height, head_offset);
     glVertex3f(gun_head_radius, -gun_head_height, head_offset);
     glVertex3f(-gun_head_radius, -gun_head_height, head_offset);
-
-    // Back face
+    // Back
     glVertex3f(-gun_head_radius, gun_head_height, head_offset - l);
     glVertex3f(-gun_head_radius, -gun_head_height, head_offset - l);
     glVertex3f(gun_head_radius, -gun_head_height, head_offset - l);
     glVertex3f(gun_head_radius, gun_head_height, head_offset - l);
     glEnd();
-
-    // Draw the gun barrel (a long cylinder extending forward from the head)
+    //Gun barrel
     glBegin(GL_QUADS);
-    glColor3f(0.5f, 0.5f, 0.5f); // Barrel color (metallic gray)
-
-    // Front face of the barrel
+    glColor3f(0.5f, 0.5f, 0.5f);
+    // Front 
     glVertex3f(-gun_barrel_radius, gun_head_height, head_offset + barrel_offset);
     glVertex3f(gun_barrel_radius, gun_head_height, head_offset + barrel_offset);
     glVertex3f(gun_barrel_radius, -gun_head_height, head_offset + barrel_offset);
     glVertex3f(-gun_barrel_radius, -gun_head_height, head_offset + barrel_offset);
-
-    // Back face of the barrel (attached to the turret head)
+    // Back 
     glVertex3f(-gun_barrel_radius, gun_head_height, head_offset);
     glVertex3f(-gun_barrel_radius, -gun_head_height, head_offset);
     glVertex3f(gun_barrel_radius, -gun_head_height, head_offset);
     glVertex3f(gun_barrel_radius, gun_head_height, head_offset);
-
-    // Right face of the barrel
+    // Right 
     glVertex3f(gun_barrel_radius, gun_head_height, head_offset + barrel_offset);
     glVertex3f(gun_barrel_radius, -gun_head_height, head_offset + barrel_offset);
     glVertex3f(gun_barrel_radius, -gun_head_height, head_offset);
     glVertex3f(gun_barrel_radius, gun_head_height, head_offset);
-
-    // Left face of the barrel
+    // Left
     glVertex3f(-gun_barrel_radius, gun_head_height, head_offset + barrel_offset);
     glVertex3f(-gun_barrel_radius, gun_head_height, head_offset);
     glVertex3f(-gun_barrel_radius, -gun_head_height, head_offset);
     glVertex3f(-gun_barrel_radius, -gun_head_height, head_offset + barrel_offset);
-
-    // Top face of the barrel
+    // Top
     glVertex3f(-gun_barrel_radius, gun_head_height, head_offset + barrel_offset);
     glVertex3f(gun_barrel_radius, gun_head_height, head_offset + barrel_offset);
     glVertex3f(gun_barrel_radius, gun_head_height, head_offset);
     glVertex3f(-gun_barrel_radius, gun_head_height, head_offset);
-
-    // Bottom face of the barrel
+    // Bottom 
     glVertex3f(-gun_barrel_radius, -gun_head_height, head_offset + barrel_offset);
     glVertex3f(-gun_barrel_radius, -gun_head_height, head_offset);
     glVertex3f(gun_barrel_radius, -gun_head_height, head_offset);
@@ -867,11 +827,9 @@ void DrawTurret(const float width, const float length, const float height) {
     float w = width / 2;
     float l = length / 2;
     float h = height / 2;
-
     float w_offset = w - 0.5;
     float l_offset = l - 0.5;
     float h_offset = h - 0.5;
-
     float lima = l * 1.5;
     float whiskey = w * 3;
     float tango = w - (w - 0.5);
@@ -912,7 +870,6 @@ void DrawTurret(const float width, const float length, const float height) {
     glVertex3f(w_offset, -h_offset, -l_offset);
     glVertex3f(w_offset, -h_offset, l_offset);
     glVertex3f(-w_offset, -h_offset, l_offset);
-    
     glEnd();
 }
 
@@ -929,23 +886,21 @@ void DrawTurret(const float width, const float length, const float height) {
 
 void DrawStabilizer(const float width, const float length)
 {
-  float w = width/2;
-  float l = length/2;
-  float lima = l / 6;
-  float whiskey = w * 3;
-  float tango = w - (w - 0.5);
-  float tail_lima = l * 0.2;
+    float w = width/2;
+    float l = length/2;
+    float lima = l / 6;
+    float whiskey = w * 3;
+    float tango = w - (w - 0.5);
+    float tail_lima = l * 0.2;
 
+    //DrawStabilizer
     glBegin(GL_QUADS);
-
-    // Front face
     glColor3f(1.0f, 0.5f, 0.0f);
-
+    //face
     glVertex3f(-w, -lima, 0);
     glVertex3f(w, -lima, 0);
     glVertex3f(w, lima, 0);
     glVertex3f(-w, lima, 0);
-
     glEnd();
 }
 
