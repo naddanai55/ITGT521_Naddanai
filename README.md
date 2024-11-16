@@ -64,7 +64,8 @@ The airplane’s movements and the camera’s position can be independently cont
 ![A New Plane](https://github.com/naddanai55/ITGT521_Naddanai/blob/master/Pic/Screenshot%202024-10-13%20132931.png)
 
 ---
-###The Plane Strikes Back
+
+***The Plane Strikes Back***
 **Overview:**
 
 
